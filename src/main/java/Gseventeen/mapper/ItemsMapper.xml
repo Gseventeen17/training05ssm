@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="Gseventeen.mapper.ItemsMapper" >
-  <resultMap id="BaseResultMap" type="Gseventeen.pojo.Items" >
+  <resultMap id="ItemsResultMap" type="Gseventeen.pojo.Items" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="price" property="price" jdbcType="REAL" />
     <result column="pic" property="pic" jdbcType="VARCHAR" />
     <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="Gseventeen.pojo.Items" extends="BaseResultMap" >
+  <resultMap id="ResultMapWithBLOBs" type="Gseventeen.pojo.Items" extends="ItemsResultMap" >
     <result column="detail" property="detail" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -91,7 +91,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="Gseventeen.pojo.ItemsExample" >
+  <select id="selectByExample" resultMap="ItemsResultMap" parameterType="Gseventeen.pojo.ItemsExample" >
     select
     <if test="distinct" >
       distinct
@@ -267,4 +267,8 @@
       createtime = #{createtime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="findAll" resultMap="ItemsResultMap">
+    select * from items
+  </select>
 </mapper>

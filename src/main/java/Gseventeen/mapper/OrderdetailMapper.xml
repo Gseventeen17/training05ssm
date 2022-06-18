@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="Gseventeen.mapper.OrderdetailMapper" >
-  <resultMap id="BaseResultMap" type="Gseventeen.pojo.Orderdetail" >
+  <resultMap id="OrderdetailResultMap" type="Gseventeen.pojo.Orderdetail" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="orders_id" property="ordersId" jdbcType="INTEGER" />
     <result column="items_id" property="itemsId" jdbcType="INTEGER" />
@@ -68,7 +68,7 @@
   <sql id="Base_Column_List" >
     id, orders_id, items_id, items_num
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="Gseventeen.pojo.OrderdetailExample" >
+  <select id="selectByExample" resultMap="OrderdetailResultMap" parameterType="Gseventeen.pojo.OrderdetailExample" >
     select
     <if test="distinct" >
       distinct
@@ -82,7 +82,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="OrderdetailResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from orderdetail

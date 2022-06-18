@@ -21,6 +21,6 @@
     </tx:advice>
 
     <aop:config>
-        <aop:advisor advice-ref="transactionInterceptor" pointcut="(* Gseventeen.service..*.*(..))"/>
+        <aop:advisor advice-ref="transactionInterceptor" pointcut="execution(* Gseventeen.service..*.*(..))"/>
     </aop:config>
 </beans>
